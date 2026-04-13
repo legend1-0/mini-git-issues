@@ -8,15 +8,15 @@ import { connectDB, disconnectDB } from "./db/client.js";
 connectDB();
 
 const app = express()
-const PORT = 5005
+
 
 app.use(express.json())
 app.use("/project", projectRoutes)
 app.use("/issue", issuesRoutes)
 app.use("/auth", authRoutes)
 
-const server = app.listen(PORT, ()=> {
-    console.log(`SERVER IS LIVE AT ${PORT}`); 
+const server = app.listen(process.env.PORT || 5001,"0.0.0.0", ()=> {
+    console.log(`SERVER IS LIVE AT ${process.env.PORT}`); 
 })
 
 
